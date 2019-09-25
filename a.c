@@ -25,7 +25,8 @@ int main(int ac, char *av[])
 		tok2 = strtok(NULL, " \t\r\n\a");
 		printf("token1 :%s  token2:%s\n", tok1, tok2);
 	}
-
+	printf("\n\n");
+	check_token(tok1);
   /* Free the allocated line buffer */
 	free(line_buf);
 	line_buf = NULL;
