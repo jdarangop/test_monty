@@ -21,10 +21,9 @@ int main(int ac, char *av[])
 		line_count++;
 		tok1 = strtok(line_buf, " \t\r\n\a");
 		tok2 = strtok(NULL, " \t\r\n\a");
-		printf("token1 :%s  token2:%s\n", tok1, tok2);
+		/*printf("token1 :%s  token2:%s\n", tok1, tok2);*/
 		check_token(tok1, tok2, &stack);
 	}
-	printf("\n\n");
   /* Free the allocated line buffer */
 	free(line_buf);
 	line_buf = NULL;

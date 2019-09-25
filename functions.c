@@ -37,3 +37,51 @@ void _pall(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 }
+
+/**
+* _pint - print the value at the top of the stack
+* @stack: head of the list.
+* @line_number: element of the node
+*/
+
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	if ((*stack) != NULL)
+		printf("%d\n", (*stack)->n);
+}
+
+/**
+* _pop - removes the top element of the stack
+* @stack: head of the list
+* @line_number: element of the node
+*/
+
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	int num;
+	(void)line_number;
+	stack_t *rm = (*stack);
+	(*stack) = (*stack)->next;
+	num = rm->n;
+	if(*stack)
+	{
+		(*stack)->prev = NULL;
+		free(rm);
+	}
+}
+
+/**
+* _swap - swaps the top two elements of the stack
+* @stack: head of the list
+* @line_number: element of the node
+*/
+
+void _swap(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	int tmp;
+	tmp = (*stack)->next->n;
+	(*stack)->next->n = (*stack)->n;
+	(*stack)->n = tmp;
+}
