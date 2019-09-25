@@ -1,36 +1,57 @@
 #include "header.h"
 
-int main(int ac, char *av[])
+/**
+ * main - Main of the function.
+ * @argc: Number of arguments.
+ * @argv: Arguments.
+ * Return: Exit success.
+ */
+int main(int argc, char *argv[])
 {
-  /* Open the file for reading */
 	char *line_buf = NULL;
 	size_t line_buf_size = 0;
 	unsigned int line_count = 0;
-	FILE *fp = fopen(av[1], "r");
-	char *tok1;
-	char *tok2;
-
-	if (!fp || ac != 2)
-	{
-		fprintf(stderr, "Error opening file '%s'\n", av[1]);
-		return (EXIT_FAILURE);
-	}
+	FILE *fp;
+	char *token1, *token2;
 	stack_t *stack = NULL;
+
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	fp = fopen(argv[1], "r");
+	if (!fp)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 	while (getline(&line_buf, &line_buf_size, fp) != EOF)
 	{
 		line_count++;
-		tok1 = strtok(line_buf, " \t\r\n\a");
-		tok2 = strtok(NULL, " \t\r\n\a");
-		printf("token1 :%s  token2:%s\n", tok1, tok2);
-		check_token(tok1, tok2, &stack);
+		token1 = strtok(line_buf, " \t\r\n\a");
+		token2 = strtok(NULL, " \t\r\n\a");
+		if (strcmp(token1, "push") == 0)
+		{
+			if (token2 != NULL)
+			{
+				check_argument(token2, line_buf, fp, stack, line_count);
+				push_arg = atoi(token2);
+			}
+			else
+			{	
+				fprintf(stderr, "L%d: usage: push integer\n", line_count);
+				free(line_buf);
+				free_stack(stack);
+				fclose(fp);
+				exit(EXIT_FAILURE);
+			}
+		}
+		check_token(token1, line_count, &stack);
 	}
-	printf("\n\n");
-  /* Free the allocated line buffer */
 	free(line_buf);
 	line_buf = NULL;
-
-  /* Close the file now that we are done with it */
+	free_stack(stack);
 	fclose(fp);
-
-  return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
