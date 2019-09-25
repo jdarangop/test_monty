@@ -6,21 +6,19 @@
  * @n: Element into the node.
  * Return: Node added.
  */
-stack_t *_push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
 
-	(void)line_number;
 	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->n = 3;
-	new_node->next = *stack;
+	/*if (new_node == NULL)
+		return NULL;*/
+	new_node->n = line_number;
+	new_node->next = (*stack);
 	new_node->prev = NULL;
 	if (*stack != NULL)
 		(*stack)->prev = new_node;
 	*stack = new_node;
-	return (*stack);
 }
 
 /**
@@ -30,12 +28,12 @@ stack_t *_push(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t current = *stack;
+	stack_t *current = *stack;
 
 	(void)line_number;
 	while (current != NULL)
 	{
-		printf("%d\n", current.n);
-		current = current.next;
+		printf("%d\n", current->n);
+		current = current->next;
 	}
 }

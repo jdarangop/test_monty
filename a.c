@@ -15,15 +15,14 @@ int main(int ac, char *av[])
 		fprintf(stderr, "Error opening file '%s'\n", av[1]);
 		return (EXIT_FAILURE);
 	}
-
+	stack_t *stack = NULL;
 	while (getline(&line_buf, &line_buf_size, fp) != EOF)
 	{
 		line_count++;
-		printf("contents: %s", line_buf);
 		tok1 = strtok(line_buf, " \t\r\n\a");
 		tok2 = strtok(NULL, " \t\r\n\a");
 		printf("token1 :%s  token2:%s\n", tok1, tok2);
-		check(tok1, tok2);
+		check_token(tok1, tok2, &stack);
 	}
 	printf("\n\n");
   /* Free the allocated line buffer */
