@@ -20,7 +20,9 @@ void check_token(char *token1, char *token2, stack_t **stack)
 			/*printf("hola\n");*/
 			if (token2 != NULL)
 				tok2 = atoi(token2);
+			stack_init(&(*stack));
 			array[i].f(&(*stack), tok2);
+			stack_destroy(stack_t &(*stack);
 		}
 		i++;
 	}

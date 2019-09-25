@@ -59,11 +59,10 @@ void _pint(stack_t **stack, unsigned int line_number)
 
 void _pop(stack_t **stack, unsigned int line_number)
 {
-	int num;
+	stack_t *rm;
 	(void)line_number;
-	stack_t *rm = (*stack);
+	rm = (*stack);
 	(*stack) = (*stack)->next;
-	num = rm->n;
 	if(*stack)
 	{
 		(*stack)->prev = NULL;
@@ -79,8 +78,8 @@ void _pop(stack_t **stack, unsigned int line_number)
 
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
 	int tmp;
+	(void)line_number;
 	tmp = (*stack)->next->n;
 	(*stack)->next->n = (*stack)->n;
 	(*stack)->n = tmp;

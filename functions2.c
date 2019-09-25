@@ -39,3 +39,22 @@ void _add(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = sum;
 	_pop(stack, line_number);
 }
+
+void stack_init(stack_t **stack)
+{
+	(*stack)->prev = NULL;
+	(*stack)->next = NULL;
+}
+
+void stack_destroy(stack_t **stack)
+{
+	stack_t *tmp;
+	stack_t *current = (*stack);
+
+	while (current != NULL)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
+}

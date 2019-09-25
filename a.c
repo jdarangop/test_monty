@@ -3,6 +3,7 @@
 int main(int ac, char *av[])
 {
   /* Open the file for reading */
+	stack_t *stack;
 	char *line_buf = NULL;
 	size_t line_buf_size = 0;
 	unsigned int line_count = 0;
@@ -15,7 +16,7 @@ int main(int ac, char *av[])
 		fprintf(stderr, "Error opening file '%s'\n", av[1]);
 		return (EXIT_FAILURE);
 	}
-	stack_t *stack = NULL;
+	/*stack = NULL;*/
 	while (getline(&line_buf, &line_buf_size, fp) != EOF)
 	{
 		line_count++;

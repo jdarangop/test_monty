@@ -38,6 +38,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void stack_destroy(stack_t **stack);
+void stack_init(stack_t **stack);
 size_t _len(const stack_t *stack);
 void _add(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
