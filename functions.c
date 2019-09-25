@@ -10,10 +10,11 @@ stack_t *_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
 
-	new_node = malloc(sizeof(dlistint_t));
+	(void)line_number;
+	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		return (NULL);
-	new_node->n = n;
+	new_node->n = 3;
 	new_node->next = *stack;
 	new_node->prev = NULL;
 	if (*stack != NULL)
@@ -34,7 +35,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	while (current != NULL)
 	{
-		printf("%d\n", h->n);
-		current = current->next;
+		printf("%d\n", current.n);
+		current = current.next;
 	}
 }

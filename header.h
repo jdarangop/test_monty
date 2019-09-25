@@ -24,8 +24,6 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
-int check_token(char *token1);
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -39,5 +37,10 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+stack_t *_push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+void check(char *token1, char *token2);
 
 #endif
