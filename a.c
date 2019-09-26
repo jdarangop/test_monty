@@ -31,22 +31,7 @@ int main(int argc, char *argv[])
 		line_count++;
 		token1 = strtok(line_buf, " \t\r\n\a");
 		token2 = strtok(NULL, " \t\r\n\a");
-		if (strcmp(token1, "push") == 0)
-		{
-			if (token2 != NULL)
-			{
-				check_argument(token2, line_buf, fp, stack, line_count);
-				push_arg = atoi(token2);
-			}
-			else
-			{	
-				fprintf(stderr, "L%d: usage: push integer\n", line_count);
-				free(line_buf);
-				free_stack(stack);
-				fclose(fp);
-				exit(EXIT_FAILURE);
-			}
-		}
+		cmp(token1, token2, line_buf, fp, &stack, line_count);
 		check_token(token1, line_count, &stack);
 	}
 	free(line_buf);
