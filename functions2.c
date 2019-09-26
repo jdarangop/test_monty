@@ -43,7 +43,8 @@ void _add(stack_t **stack, unsigned int line_number)
 {
 	int lenght;
 	int tmp, sum;
-	lenght = _len((*stack));
+
+	lenght = _len(*stack);
 	if (lenght < 2)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short", line_number);

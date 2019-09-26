@@ -17,6 +17,14 @@ size_t stack_len(const stack_t *h)
 	return (counter);
 }
 
+/**
+ * chkpint - check pint.
+ * @line_buf: Buffer getline.
+ * @fp: File descriptor.
+ * @stack: Stack.
+ * @line: Line number.
+ * Return: void.
+ */
 void chkpint(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 {
 	if (stack == NULL)
@@ -29,6 +37,14 @@ void chkpint(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 	}
 }
 
+/**
+ * chkpop - check pop.
+ * @line_buf: Buffer getline.
+ * @fp: File descriptor.
+ * @stack: Stack.
+ * @line: Line number.
+ * Return: void.
+ */
 void chkpop(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 {
 	if (stack == NULL)
@@ -40,7 +56,15 @@ void chkpop(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 }
-	
+
+/**
+ * chkswap - check swap.
+ * @line_buf: Buffer getline.
+ * @fp: File descriptor.
+ * @stack: Stack.
+ * @line: Line number.
+ * Return: void.
+ */
 void chkswap(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 {
 	int len;
@@ -56,6 +80,14 @@ void chkswap(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 	}
 }
 
+/**
+ * chkadd - check add.
+ * @line_buf: Buffer getline.
+ * @fp: File descriptor.
+ * @stack: Stack.
+ * @line: Line number.
+ * Return: void.
+ */
 void chkadd(char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
 {
 	int len;

@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		line_count++;
 		token1 = strtok(line_buf, " \t\r\n\a");
 		token2 = strtok(NULL, " \t\r\n\a");
-		cmp(token1, token2, line_buf, fp, &stack, line_count);
+		cmp(token1, token2, line_buf, fp, &stack, (int)line_count);
 		check_token(token1, line_count, &stack);
 	}
 	free(line_buf);

@@ -15,7 +15,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	new_node->n = push_arg;
 	new_node->next = (*stack);
@@ -85,13 +85,18 @@ void _pint(stack_t **stack, unsigned int line_number)
 
 void _pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *rm;
+	stack_t *current = *stack;
+
 	(void)line_number;
-	rm = (*stack);
-	(*stack) = (*stack)->next;
-	if(*stack)
+	if (current->next != NULL)
 	{
-		(*stack)->prev = NULL;
-		free(rm);
+		(current->next)->prev = NULL;
+		*stack = current->next;
+		free(current);
+	}
+	else
+	{
+		*stack = NULL;
+		free(current);
 	}
 }

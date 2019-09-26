@@ -1,5 +1,12 @@
 #include "header.h"
 
+/**
+ * check_token - check if the token exist.
+ * @token1: First token.
+ * @line_number: Line number.
+ * @stack: Stack.
+ * Return: void.
+ */
 void check_token(char *token1, unsigned int line_number, stack_t **stack)
 {
 	instruction_t array[] = {
@@ -13,9 +20,9 @@ void check_token(char *token1, unsigned int line_number, stack_t **stack)
 			};
 	int i = 0;
 
-	while(i < 6)
+	while (i < 6)
 	{
-		if(strcmp(array[i].opcode, token1) == 0)
+		if (strcmp(array[i].opcode, token1) == 0)
 		{
 			array[i].f(&(*stack), line_number);
 			return;
@@ -25,7 +32,16 @@ void check_token(char *token1, unsigned int line_number, stack_t **stack)
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token1);
 }
 
-void chkpush(char *token, char *line_buf, FILE *fp, stack_t *stack, unsigned int line)
+/**
+ * chkpush - check push.
+ * @token: First token.
+ * @line_buf: Buffer getline.
+ * @fp: File descriptor.
+ * @stack: Stack.
+ * @line: Line number.
+ * Return: void.
+ */
+void chkpush(char *token, char *line_buf, FILE *fp, stack_t *stack, int line)
 {
 	int i = 0;
 
@@ -56,7 +72,7 @@ void chkpush(char *token, char *line_buf, FILE *fp, stack_t *stack, unsigned int
 		push_arg = atoi(token);
 	}
 	else
-	{	
+	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
 		free(line_buf);
 		free_stack(stack);
@@ -65,16 +81,26 @@ void chkpush(char *token, char *line_buf, FILE *fp, stack_t *stack, unsigned int
 	}
 }
 
-void cmp(char *token, char *args, char *line_buf, FILE *fp, stack_t **stack, unsigned int line)
+/**
+ * cmp - check if the token is a command.
+ * @tk: First token.
+ * @arg: Argument.
+ * @buf: Buffer getline.
+ * @fp: File descriptor.
+ * @stack: Stack.
+ * @line: Line number.
+ * Return: void.
+ */
+void cmp(char *tk, char *arg, char *buf, FILE *fp, stack_t **stack, int line)
 {
-	if (strcmp(token, "push") == 0)
-		chkpush(args, line_buf, fp, *stack, line);
-	else if (strcmp(token, "pint") == 0)
-		chkpint(line_buf, fp, *stack, line);
-	else if (strcmp(token, "pop") == 0)
-		chkpop(line_buf, fp, *stack, line);
-	else if (strcmp(token, "swap") == 0)
-		chkswap(line_buf, fp, *stack, line);
-	else if (strcmp(token, "add") == 0)
-		chkadd(line_buf, fp, *stack, line);
+	if (strcmp(tk, "push") == 0)
+		chkpush(arg, buf, fp, *stack, line);
+	else if (strcmp(tk, "pint") == 0)
+		chkpint(buf, fp, *stack, line);
+	else if (strcmp(tk, "pop") == 0)
+		chkpop(buf, fp, *stack, line);
+	else if (strcmp(tk, "swap") == 0)
+		chkswap(buf, fp, *stack, line);
+	else if (strcmp(tk, "add") == 0)
+		chkadd(buf, fp, *stack, line);
 }

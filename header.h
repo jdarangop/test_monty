@@ -44,7 +44,7 @@ typedef struct instruction_s
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void check_token(char *token1,  unsigned int line_number, stack_t **stack);
-void chkpush(char *token, char *line_buf, FILE *fp, stack_t *stack, unsigned int line);
+void chkpush(char *token, char *line_buf, FILE *fp, stack_t *stack, int line);
 void free_stack(stack_t *head);
 size_t _len(const stack_t *stack);
 void _add(stack_t **stack, unsigned int line_number);
@@ -53,7 +53,7 @@ void _pint(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 
 
-void cmp(char *token, char *args, char *line_buf, FILE *fp, stack_t **stack, unsigned int line);
+void cmp(char *tk, char *arg, char *buf, FILE *fp, stack_t **stack, int line);
 void chkpint(char *line_buf, FILE *fp, stack_t *stack, unsigned int line);
 void chkpop(char *line_buf, FILE *fp, stack_t *stack, unsigned int line);
 void chkswap(char *line_buf, FILE *fp, stack_t *stack, unsigned int line);
