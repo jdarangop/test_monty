@@ -46,6 +46,11 @@ void _pall(stack_t **stack, unsigned int line_number);
 void check_token(char *token1,  unsigned int line_number, stack_t **stack);
 void check_argument(char *token, char *line_buf, FILE *fp, stack_t *stack, unsigned int line);
 void free_stack(stack_t *head);
+size_t _len(const stack_t *stack);
+void _add(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
 
 int push_arg;
 
